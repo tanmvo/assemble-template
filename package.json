@@ -1,0 +1,23 @@
+{
+  "name": "14YEL45268",
+  "version": "0.0.0",
+  "description": "Content and ROI Email Marketing Campaign",
+  "devDependencies": {
+    "grunt": "~0.4.4"
+  },
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://thetanman@bitbucket.org/thetanman/14yel45268.git"
+  },
+  "keywords": [
+    "Content",
+    "ROI",
+    "YellowPages"
+  ],
+  "author": "Tan Vo",
+  "license": "MIT"
+}
