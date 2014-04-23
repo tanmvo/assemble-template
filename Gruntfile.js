@@ -1,4 +1,4 @@
-export.modules = function(grunt) {
+module.exports = function(grunt) {
 	// Project configuration
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -9,6 +9,6 @@ export.modules = function(grunt) {
 	grunt.loadNpmTasks('assemble');
 
 	// Default task
-	grunt.registerTask('default', ['']);
+	grunt.registerTask('default', []);
 
 };
