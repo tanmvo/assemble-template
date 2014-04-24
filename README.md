@@ -4,4 +4,4 @@
 
 ## To Do:
 
-> Add documentation section with markdown capability.
+* Add documentation section with markdown capability.
