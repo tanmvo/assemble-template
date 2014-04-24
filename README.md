@@ -1,3 +1,3 @@
-# 14YEL45268
-## Content and ROI campaign
-### HBS template project
+# Assemble Boilerplate: Site
+
+### Simple boilerplate to generate .html pages from Handlebars templates. 
