@@ -30,3 +30,6 @@ dist
 
 # Ignore client/ assets folder
 assets/client/**
+
+# todo files
+index.todo

@@ -2,6 +2,13 @@ module.exports = function(grunt) {
 	// Project configuration
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		// watch tasks
+		watch: {
+			hbs: { 
+				files: 'templates/**/*.hbs',
+				tasks: ['assemble:dev'],
+			}
+		},
 		// assemble config
 		assemble: {
 			// Add development option - produce .html files for testing 
@@ -25,14 +32,14 @@ module.exports = function(grunt) {
 					production: true
 				},
 				files: {
-					'dist/': ['templates/pages/*.hbs', '!templates/pages/index.hbs']
+					'dist/': ['templates/pages/*.hbs']
 				},
 			}
 		},
 		// Clean directories before assemble
 		clean: {
-			dev: ['./wip/*'],
-			prod: ['./dist/*']
+			dev: ['wip/*'],
+			prod: ['dist/*']
 		},
 		// copy img/ folder into new directory
 		copy: {
@@ -52,23 +59,22 @@ module.exports = function(grunt) {
 						expand: true,
 						cwd: 'assets/',
 						src: 'img/**',
-						dest: './dist/'
+						dest: 'dist/'
 					}
 				]
 			}
 		},
 		// Browser-sync to view files on web browser
-		browserSync: {
+		browserSync: {	
 			bsFiles: {
 				src: [
-					'wip/*.html', 
-					'dist/*.html',
+					'wip/*.html',
 					'img/**'
 				]
 			},
 			options: {
+				watchTask: true,
 				server: {
-					host: 'localhost',
 					baseDir: './wip/',
 					index: false,
 					ghostMode: {
@@ -78,19 +84,19 @@ module.exports = function(grunt) {
 						forms: false
 					}
 				}
-			}
+			},
 		}
 	});
 
 	// Load plugins
+	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('assemble');
 	grunt.loadNpmTasks('grunt-browser-sync');
-
+	
 	// Default task
-	grunt.registerTask('default', ['clean:dev', 'assemble:dev', 'copy:dev', 'browserSync']);
-	grunt.registerTask('bs', ['browserSync']);
+	grunt.registerTask('default', ['clean:dev', 'assemble:dev', 'copy:dev', 'browserSync', 'watch']);
 	grunt.registerTask('dist', ['clean:prod', 'assemble:prod', 'copy:prod']);
 
 };
