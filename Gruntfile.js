@@ -6,7 +6,14 @@ module.exports = function(grunt) {
 		watch: {
 			hbs: { 
 				files: 'templates/**/*.hbs',
-				tasks: ['assemble:dev'],
+				tasks: ['assemble:dev']
+			},
+			copy: {
+				files: './assets/img/*.{gif,jpg,png}',
+				tasks: ['copy:dev'],
+				options: {
+					event: ['added', 'changed']
+				}
 			}
 		},
 		// assemble config
@@ -52,16 +59,6 @@ module.exports = function(grunt) {
 						dest: 'wip/'
 					}
 				]
-			},
-			prod: {
-				files: [
-					{
-						expand: true,
-						cwd: 'assets/',
-						src: 'img/**',
-						dest: 'dist/'
-					}
-				]
 			}
 		},
 		// Browser-sync to view files on web browser
@@ -85,6 +82,16 @@ module.exports = function(grunt) {
 					}
 				}
 			},
+		},
+		replace: {
+			prod: {
+				src: ['dist/*.html'],
+				overwrite: true,
+				replacements: [{
+					from: 'img/',
+					to: 'http://taosdirect.taoscreative.com.au/cimages/2214562f47d1ad0561eb8b221efcdde4/'
+				}]
+			}
 		}
 	});
 
@@ -94,9 +101,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('assemble');
 	grunt.loadNpmTasks('grunt-browser-sync');
+	grunt.loadNpmTasks('grunt-text-replace');
 	
 	// Default task
 	grunt.registerTask('default', ['clean:dev', 'assemble:dev', 'copy:dev', 'browserSync', 'watch']);
-	grunt.registerTask('dist', ['clean:prod', 'assemble:prod', 'copy:prod']);
+	grunt.registerTask('dist', ['clean:prod', 'assemble:prod', 'replace:prod']);
 
 };
