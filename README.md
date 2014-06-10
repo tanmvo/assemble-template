@@ -8,4 +8,6 @@ Added grunt-contrib-watch to update changes to handlebars files and serve using 
 
 ## To Do:
 
+* Add watch functionality when adding files to project
 * Add documentation section with markdown capability.
+* fork project and create edm template version
