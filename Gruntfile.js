@@ -18,10 +18,10 @@ module.exports = function(grunt) {
 		        layout: 'default.hbs',
 		    },
 	      	email001: {
-	      		files: {'dist/email-001': ['email-001/index.hbs']},
+	      		files: {'dist/001/': ['001/index.hbs']},
 	      		options: {
-	      			partials: 'email-001/product.hbs',
-	      			data: 'email-001/*.json'
+	      			partials: '001/product.hbs',
+	      			data: '001/*.json'
 	      		}
 	      	},
 		},
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
 				base: ['dist/']
 			},
 			livereload: {
-				
+
 			}
 		},
 		watch: {
@@ -43,9 +43,9 @@ module.exports = function(grunt) {
 					livereload: true,
 				},
 			hbs: {
-				files: ['email-001/*.hbs', 'templates/**/*.hbs'],
+				files: ['001/*.hbs', 'templates/**/*.hbs'],
 				tasks: ['assemble'],
-				
+
 			},
 		},
 	});
