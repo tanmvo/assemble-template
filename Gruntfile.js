@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 		        layoutdir: 'templates/layouts',
 		        layout: 'default.hbs',
 		    },
-	      	email001: {
+	      	page001: {
 	      		files: {'dist/001/': ['001/index.hbs']},
 	      		options: {
 	      			partials: '001/product.hbs',
@@ -34,10 +34,10 @@ module.exports = function(grunt) {
 				open: {appName: 'Google Chrome'},
 				base: ['dist/']
 			},
-			livereload: {
-
-			}
+			livereload: true,
 		},
+		copy: {},
+		replace: {},
 		watch: {
 			options: {
 					livereload: true,
@@ -45,7 +45,6 @@ module.exports = function(grunt) {
 			hbs: {
 				files: ['001/*.hbs', 'templates/**/*.hbs'],
 				tasks: ['assemble'],
-
 			},
 		},
 	});
@@ -53,6 +52,8 @@ module.exports = function(grunt) {
   	grunt.loadNpmTasks('assemble');
   	grunt.loadNpmTasks('grunt-contrib-clean');
   	grunt.loadNpmTasks('grunt-contrib-connect');
+		grunt.loadNpmTasks('grunt-contrib-copy');
+		grunt.loadNpmTasks('grunt-text-replace');
   	grunt.loadNpmTasks('grunt-contrib-watch');
   	// Default task to be run.
   	grunt.registerTask('default', ['clean', 'assemble']);
