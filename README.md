@@ -1,13 +1,21 @@
-# Assemble Boilerplate: Site
+# Assemble Template
 
-Simple boilerplate to generate Static HTML pages using assemble.io
+Boilerplate Assemble Template to generate static HTML pages
 
-## Version 1.1: Bear
+## Versions
 
-Added grunt-contrib-watch to update changes to handlebars files and serve using browser-sync.
+#### Version 2.0: Polar Bear
 
-## To Do:
+* Added `grunt-contrib-connect` to serve HTML files
+* Mimic project structure from [assemble buttons](https://github.com/assemble/buttons)
+* Removed `browser-sync` support, switched to `grunt-contrib-watch` for livereload options
 
-* Add watch functionality when adding files to project
-* Add documentation section with markdown capability.
-* fork project and create edm template version
+#### Version 1.1: Bear
+
+Added `grunt-contrib-watch` to update changes to handlebars files, livereload served with `browser-sync`.
+
+#### Roadmap:
+
+* Watch for added files to project using `grunt-contrib-watch`
+* Add documentation section with markdown capability
+* Assemble templates for building HTML emails: **Coming Soon!**
