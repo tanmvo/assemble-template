@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 	      	page001: {
 	      		files: {'dist/001/': ['001/index.hbs']},
 	      		options: {
-	      			partials: '001/product.hbs',
+	      			partials: '001/*.hbs',
 	      			data: '001/*.json'
 	      		}
 	      	},
