@@ -24,6 +24,13 @@ module.exports = function(grunt) {
 	      			data: '001/*.json'
 	      		}
 	      	},
+					page002: {
+						files: {'dist/002/': ['002/index.hbs']},
+						options: {
+							partials: '002/*.hbs',
+							data: '002/*.json'
+						}
+					},
 		},
 		clean: ['dist/**/*'],
 		connect: {
