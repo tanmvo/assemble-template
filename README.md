@@ -1,8 +1,8 @@
 # Assemble Template
 
-A boilerplate to generate static HTML pages. Livereload served using `grunt-connect` and `grunt-contrib-watch`.
+A boilerplate to generate static HTML pages using [Assemble.io](assemble). Livereload served using `grunt-connect` and `grunt-contrib-watch`.
 
-Managing a library of Static HTML pages can be daunting, especially when it comes to amends.  [Assemble.io](assemble) focuses on _"separation of concerns regarding structure, style, content and data"._
+Managing a library of Static HTML pages can be daunting, especially when you're making miniscule amends. [Assemble.io](assemble) generates your HTML from `handlebars` templates, so changes made are reflected across all pages.
 
 > What projects can I use `assemble-template` for?
 
