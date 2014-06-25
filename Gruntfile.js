@@ -24,13 +24,13 @@ module.exports = function(grunt) {
 	      			data: '001/*.json'
 	      		}
 	      	},
-					page002: {
-						files: {'dist/002/': ['002/index.hbs']},
-						options: {
-							partials: '002/*.hbs',
-							data: '002/*.json'
-						}
-					},
+			page002: {
+				files: {'dist/002/': ['002/index.hbs']},
+				options: {
+					partials: '002/*.hbs',
+					data: '002/*.json'
+				}
+			},
 		},
 		clean: ['dist/**/*'],
 		connect: {
@@ -44,6 +44,16 @@ module.exports = function(grunt) {
 			livereload: true,
 		},
 		copy: {},
+		less: {
+			development: {
+				options: {
+					paths: ["assets/css"]
+				},
+					files: {
+					"assets/css/main.css": "src/less/main.less"
+				},
+			},
+		},
 		replace: {},
 		watch: {
 			options: {
@@ -60,9 +70,10 @@ module.exports = function(grunt) {
   	grunt.loadNpmTasks('grunt-contrib-clean');
   	grunt.loadNpmTasks('grunt-contrib-connect');
 		grunt.loadNpmTasks('grunt-contrib-copy');
+		grunt.loadNpmTasks('grunt-contrib-less');
 		grunt.loadNpmTasks('grunt-text-replace');
   	grunt.loadNpmTasks('grunt-contrib-watch');
   	// Default task to be run.
-  	grunt.registerTask('default', ['clean', 'assemble']);
-  	grunt.registerTask('test', ['clean', 'assemble', 'connect', 'watch']);
+  	grunt.registerTask('default', ['clean', 'less', 'assemble']);
+  	grunt.registerTask('test', ['clean', 'less', 'assemble', 'connect', 'watch']);
 };
