@@ -1,0 +1,30 @@
+{
+  "name": "Preference Manager",
+  "version": "0.0.0",
+  "homepage": "http://yellowadvertising.com.au",
+  "authors": [
+    "Tan Vo <tan.m.vo@gmail.com>"
+  ],
+  "description": "Sensis Preference Manager",
+  "main": "index.html",
+  "keywords": [
+    "preference",
+    "manager",
+    "bootstrap",
+    "less",
+    "sensis",
+    "ux",
+    "ui"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0"
+  }
+}

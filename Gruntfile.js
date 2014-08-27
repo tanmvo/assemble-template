@@ -12,9 +12,9 @@ module.exports = function(grunt) {
 		          newlines: true
 		        },
 		        assets: 'assets/',
-		        helpers: 'templates/helpers/*.js',
-		        partials: 'templates/includes/*.hbs',
-		        layoutdir: 'templates/layouts',
+		        helpers: 'src/templates/helpers/*.js',
+		        partials: 'src/templates/includes/*.hbs',
+		        layoutdir: 'src/templates/layouts',
 		        layout: 'default.hbs',
 		    },
 	      	page001: {
@@ -24,13 +24,6 @@ module.exports = function(grunt) {
 	      			data: '001/*.json'
 	      		}
 	      	},
-			page002: {
-				files: {'dist/002/': ['002/index.hbs']},
-				options: {
-					partials: '002/*.hbs',
-					data: '002/*.json'
-				}
-			},
 		},
 		clean: ['dist/**/*'],
 		connect: {
@@ -43,14 +36,36 @@ module.exports = function(grunt) {
 			},
 			livereload: true,
 		},
-		copy: {},
+		copy: {
+			bootstrap: {
+				expand: true,
+					cwd: 'bower_components/bootstrap/dist/js/',
+					src: 'bootstrap.min.js',
+					dest: 'dist/assets/js/',
+					flatten: true,
+			},
+			js: {
+				expand: true,
+					cwd: 'src/js/',
+					src: '*.js',
+					dest: 'dist/assets/js/',
+					flatten: true,
+			},
+			img: {
+				expand: true,
+					cwd: 'src/img/',
+					src: ['*'],
+					dest: 'dist/assets/img/',
+					flatten: true,
+			}
+		},
 		less: {
 			development: {
 				options: {
 					paths: ["assets/css"]
 				},
 					files: {
-					"assets/css/main.css": "src/less/main.less"
+					"dist/assets/css/main.css": "src/less/main.less"
 				},
 			},
 		},
@@ -60,8 +75,16 @@ module.exports = function(grunt) {
 					livereload: true,
 				},
 			hbs: {
-				files: ['001/*.hbs', 'templates/**/*.hbs'],
+				files: ['001/*.hbs', 'src/templates/**/*.hbs'],
 				tasks: ['assemble'],
+			},
+			less: {
+				files: ['src/less/*.less'],
+				tasks: ['less'],
+			},
+			js: {
+				files: ['src/js/*.js'],
+				tasks: ['copy'],
 			},
 		},
 	});
@@ -69,11 +92,11 @@ module.exports = function(grunt) {
   	grunt.loadNpmTasks('assemble');
   	grunt.loadNpmTasks('grunt-contrib-clean');
   	grunt.loadNpmTasks('grunt-contrib-connect');
-		grunt.loadNpmTasks('grunt-contrib-copy');
-		grunt.loadNpmTasks('grunt-contrib-less');
-		grunt.loadNpmTasks('grunt-text-replace');
+	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-text-replace');
   	grunt.loadNpmTasks('grunt-contrib-watch');
   	// Default task to be run.
-  	grunt.registerTask('default', ['clean', 'less', 'assemble']);
-  	grunt.registerTask('test', ['clean', 'less', 'assemble', 'connect', 'watch']);
+  	grunt.registerTask('default', ['clean', 'copy', 'less', 'assemble']);
+  	grunt.registerTask('serve', ['clean', 'copy', 'less', 'assemble', 'connect', 'watch']);
 };
